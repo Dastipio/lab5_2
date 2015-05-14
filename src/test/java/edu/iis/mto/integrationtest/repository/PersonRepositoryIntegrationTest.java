@@ -33,6 +33,13 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 		assertEquals(2, foundTestPersons.size());
 	}
 
+	@Test
+	public void testDeletePerson() {
+		personRepository.delete(1L);
+		assertEquals(1, personRepository.count());
+		assertEquals(null, personRepository.findOne(1L));
+	}
+
 	private Person a(PersonBuilder builder) {
 		return builder.build();
 	}
